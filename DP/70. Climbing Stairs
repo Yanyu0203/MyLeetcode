@@ -1,0 +1,23 @@
+Link：https://leetcode.cn/problems/climbing-stairs
+
+题目描述：You are climbing a staircase. It takes 'n' steps to reach the top.
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+思路：对于第'i'层楼梯，到达该层只有两种情况：从'i-1'或'i-2'爬上来。因此我们可以通过保存'i-1'和'i-2'的数据来更新'i'层数据。起始'0'层为0，'1'层为1。
+
+'''
+class Solution {
+public:
+    int climbStairs(int n) {
+        int p = 0;
+        int q = 0;
+        int r = 1;
+        for(int i = 0; i < n; i++) {
+            p = q;
+            q = r;
+            r = p + q;
+        }
+        return r;
+    }
+};
+'''
